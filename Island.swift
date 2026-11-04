@@ -73,6 +73,12 @@ final class Model: ObservableObject {
 
         // Tuck back into the notch a few seconds after finishing.
         if new == .done {
+            // Double tap on the Force Touch trackpad (only felt while a finger is resting on it).
+            let haptics = NSHapticFeedbackManager.defaultPerformer
+            haptics.perform(.levelChange, performanceTime: .now)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.12) {
+                haptics.perform(.levelChange, performanceTime: .now)
+            }
             DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
                 if self.status == .done { try? "idle".write(toFile: statusPath, atomically: true, encoding: .utf8) }
             }
