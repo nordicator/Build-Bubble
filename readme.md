@@ -4,4 +4,4 @@ music is also a thing and it shows you the album cover and a little visualizer s
 
 uhh theres also a little drawer where yopu can drop files and stuff. 
 
-build it using the swift thingy
+build it using build.sh and then drag "island" to ur applications folder
